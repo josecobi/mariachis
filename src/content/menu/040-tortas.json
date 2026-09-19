@@ -2,8 +2,8 @@
   "name": "Tortas",
   "order": 40,
   "note": "All our tortas are stacked with layers of refried beans, mayo, fresh lettuce, tomatoes, onions, and jalapeño peppers.",
-  "image": "cuban.jpg",
-  "imageAlt": "Cubana torta with breaded beef, ham, scrambled eggs, and Mexican sausage",
+  "image": "torta-hawaiana.jpg",
+  "imageAlt": "Hawaiiana torta with ham, pineapple, and melted cheese",
   "items": [
     {
       "name": "Milanesa de Pollo",
