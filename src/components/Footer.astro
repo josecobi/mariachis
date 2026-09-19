@@ -1,0 +1,58 @@
+---
+import business from '../data/business.json';
+
+const year = new Date().getFullYear();
+
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Menu', href: '/menu/' },
+  { label: 'About Us', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+];
+---
+
+<div class="bg-charcoal text-cream">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
+      <!-- Brand -->
+      <div>
+        <span class="text-2xl font-heading text-gold">Los Mariachis</span>
+        <p class="mt-3 text-sm text-warm-gray-light leading-relaxed max-w-xs">
+          A small, family-run kitchen in Baltimore, serving authentic recipes since 1995.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-xs tracking-[0.2em] uppercase text-gold font-medium mb-4">Explore</h3>
+        <ul class="space-y-2">
+          {quickLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-cream/80 hover:text-gold transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Visit Us -->
+      <div>
+        <h3 class="text-xs tracking-[0.2em] uppercase text-gold font-medium mb-4">Visit Us</h3>
+        <address class="not-italic text-sm text-cream/80 space-y-2 leading-relaxed">
+          <p>{business.streetAddress}<br />{business.addressLocality}, {business.addressRegion} {business.postalCode}</p>
+          <p>
+            <a href={`tel:${business.telephone}`} class="hover:text-gold transition-colors">
+              {business.telephoneDisplay}
+            </a>
+          </p>
+          <p>{business.hoursDisplay}</p>
+        </address>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-cream/10 text-center text-xs text-cream/50">
+      &copy; {year} Los Mariachis. All rights reserved.
+    </div>
+  </div>
+</div>

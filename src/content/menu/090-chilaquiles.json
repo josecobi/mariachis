@@ -2,6 +2,8 @@
   "name": "Chilaquiles",
   "order": 90,
   "note": "Crispy tortilla chips in mild spicy green or red sauce. Topped with cream, lettuce, and cheese.",
+  "image": "chilaquiles-bistec.jpg",
+  "imageAlt": "Chilaquiles topped with steak, cream, and cheese",
   "items": [
     {
       "name": "Sencillos",

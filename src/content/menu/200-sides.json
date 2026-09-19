@@ -1,6 +1,8 @@
 {
   "name": "Sides",
   "order": 200,
+  "image": "pico-gallo-sides.jpg",
+  "imageAlt": "Fresh pico de gallo",
   "items": [
     {
       "name": "Guacamole",

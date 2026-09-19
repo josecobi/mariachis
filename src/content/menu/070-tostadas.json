@@ -2,6 +2,8 @@
   "name": "Tostadas",
   "order": 70,
   "note": "Three crispy corn tortillas topped with refried beans, lettuce, cheese, and cream.",
+  "image": "3tostadas-tinga-.jpg",
+  "imageAlt": "Tostadas topped with tinga, lettuce, and cheese",
   "items": [
     {
       "name": "Sencillas",

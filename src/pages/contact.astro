@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import business from '../data/business.json';
+---
+
+<BaseLayout
+  title={`Contact & Hours | ${business.name}, ${business.addressLocality}`}
+  description={`Find ${business.name} in ${business.addressLocality}: address, opening hours, phone, directions, and how to reach us.`}
+>
+  <Nav slot="header" client:load currentPath="/contact" />
+
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+    <div class="space-y-12">
+      <!-- Header -->
+      <div class="text-center space-y-4 animate-load">
+        <h1 class="text-5xl sm:text-6xl font-heading text-charcoal">Get in Touch</h1>
+        <p class="text-lg text-warm-gray max-w-2xl mx-auto">
+          We'd love to hear from you. Whether you have questions, want to make a reservation, or simply want to say hello.
+        </p>
+      </div>
+
+      <!-- Contact Info Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-load animate-load-delay-1">
+        <!-- Phone -->
+        <div class="bg-cream-dark p-8 rounded-lg text-center space-y-3">
+          <div class="flex justify-center mb-4">
+            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-heading text-charcoal">Phone</h3>
+          <p class="text-warm-gray text-sm">Call us for reservations or inquiries</p>
+          <a href={`tel:${business.telephone}`} class="inline-block text-gold font-medium hover:text-gold-light transition-colors">
+            {business.telephoneDisplay}
+          </a>
+        </div>
+
+        <!-- Location -->
+        <div class="bg-cream-dark p-8 rounded-lg text-center space-y-3">
+          <div class="flex justify-center mb-4">
+            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-heading text-charcoal">Location</h3>
+          <p class="text-warm-gray text-sm">Find us at our dining destination</p>
+          <div class="text-gold font-medium">
+            <p>{business.streetAddress}</p>
+            <p>{business.addressLocality}, {business.addressRegion} {business.postalCode}</p>
+          </div>
+        </div>
+
+        <!-- Hours -->
+        <div class="bg-cream-dark p-8 rounded-lg text-center space-y-3">
+          <div class="flex justify-center mb-4">
+            <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-heading text-charcoal">Hours</h3>
+          <p class="text-warm-gray text-sm">Open daily</p>
+          <div class="text-gold font-medium text-sm">
+            {business.hoursDisplay.split(', ').map((line) => <p>{line}</p>)}
+          </div>
+        </div>
+      </div>
+
+      {/*
+      <!-- Contact Form -->
+      <div class="max-w-2xl mx-auto animate-load animate-load-delay-2">
+        <h2 class="text-3xl font-heading text-charcoal mb-8 text-center">Send us a Message</h2>
+
+        <form class="space-y-6" action="#" method="POST">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Name -->
+            <div class="space-y-2">
+              <label for="name" class="block text-sm font-medium text-charcoal">
+                Full Name
+              </label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                required
+                class="w-full px-4 py-3 border border-warm-gray/30 rounded bg-cream focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors"
+                placeholder="Your name"
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="space-y-2">
+              <label for="email" class="block text-sm font-medium text-charcoal">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 border border-warm-gray/30 rounded bg-cream focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors"
+                placeholder="your.email@example.com"
+              />
+            </div>
+          </div>
+
+          <!-- Phone (Optional) -->
+          <div class="space-y-2">
+            <label for="phone" class="block text-sm font-medium text-charcoal">
+              Phone Number (Optional)
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              class="w-full px-4 py-3 border border-warm-gray/30 rounded bg-cream focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors"
+              placeholder="+1 (555) 123-4567"
+            />
+          </div>
+
+          <!-- Subject -->
+          <div class="space-y-2">
+            <label for="subject" class="block text-sm font-medium text-charcoal">
+              Subject
+            </label>
+            <select
+              id="subject"
+              name="subject"
+              required
+              class="w-full px-4 py-3 border border-warm-gray/30 rounded bg-cream focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors"
+            >
+              <option value="">Select a subject...</option>
+              <option value="reservation">Reservation Inquiry</option>
+              <option value="event">Private Event</option>
+              <option value="allergy">Allergy & Dietary Question</option>
+              <option value="feedback">Feedback</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="space-y-2">
+            <label for="message" class="block text-sm font-medium text-charcoal">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="6"
+              class="w-full px-4 py-3 border border-warm-gray/30 rounded bg-cream focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-colors resize-none"
+              placeholder="Tell us what's on your mind..."
+            />
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full px-8 py-3 bg-gold text-charcoal font-medium rounded hover:bg-gold-light transition-colors active:scale-[0.98]"
+          >
+            Send Message
+          </button>
+
+          <p class="text-xs text-warm-gray text-center">
+            We'll get back to you as soon as possible.
+          </p>
+        </form>
+      </div>
+      */}
+
+      <!-- Map Section -->
+      <div class="mt-12 animate-load animate-load-delay-3">
+        <h2 class="text-3xl font-heading text-charcoal mb-6 text-center">Find Us</h2>
+        <div class="bg-cream-dark rounded-lg overflow-hidden h-96">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3084.8149270567656!2d-76.60919!3d39.2895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7c8f4d4d4d4d5%3A0x5d5d5d5d5d5d5d5d!2s2227%20Eastern%20Ave%2C%20Baltimore%2C%20MD%2021231!5e0!3m2!1sen!2sus!4v1234567890"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -16,14 +16,14 @@ const { sections } = Astro.props;
   class="sticky top-0 z-20 bg-cream/95 backdrop-blur border-y border-charcoal/10"
 >
   <ul
-    class="max-w-5xl mx-auto px-6 flex gap-7 overflow-x-auto py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    class="max-w-6xl mx-auto px-4 sm:px-6 flex gap-3 sm:gap-6 overflow-x-auto py-3 sm:py-4 [scrollbar-width:thin] [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:bg-warm-gray/30 [&::-webkit-scrollbar-track]:bg-transparent"
   >
     {
       sections.map((section) => (
         <li>
           <a
             href={`#${section.id}`}
-            class="whitespace-nowrap text-xs uppercase tracking-[0.18em] text-warm-gray hover:text-charcoal transition-colors"
+            class="whitespace-nowrap text-[0.65rem] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.18em] text-warm-gray hover:text-charcoal transition-colors font-medium"
           >
             {section.name}
           </a>
@@ -32,6 +32,6 @@ const { sections } = Astro.props;
     }
   </ul>
   <div
-    class="pointer-events-none absolute right-0 inset-y-0 w-10 bg-gradient-to-l from-cream lg:hidden"
+    class="pointer-events-none absolute right-0 inset-y-0 w-8 sm:w-12 bg-gradient-to-l from-cream md:hidden"
   />
 </nav>

@@ -1,14 +1,21 @@
 ---
 import '../styles/global.css';
+import PhoneBanner from '../components/PhoneBanner.astro';
+import Footer from '../components/Footer.astro';
+import business from '../data/business.json';
 
 interface Props {
   title: string;
   description?: string;
-  /** Page-specific JSON-LD to inject in addition to the base Restaurant schema. */
-  jsonLd?: object;
+  /** Page-specific JSON-LD node(s) to add to the sitewide @graph (Restaurant + WebSite). */
+  jsonLd?: object | object[];
 }
 
-const { title, description = 'An exquisite dining experience crafted with passion and precision.', jsonLd } = Astro.props;
+const {
+  title,
+  description = `${business.name} — a family-run Mexican restaurant in ${business.addressLocality}, ${business.addressRegion}, serving authentic recipes since ${business.foundingYear}.`,
+  jsonLd,
+} = Astro.props;
 
 const siteOrigin = Astro.site?.href ?? 'https://localhost:4321';
 
@@ -22,6 +29,48 @@ try {
 
 const canonical = new URL(currentPage, siteOrigin).href;
 const ogImage = new URL('/og-image.jpg', siteOrigin).href;
+
+const restaurantSchema = {
+  '@type': 'Restaurant',
+  '@id': `${siteOrigin}#restaurant`,
+  name: business.name,
+  legalName: business.legalName,
+  url: siteOrigin,
+  image: ogImage,
+  telephone: business.telephone,
+  priceRange: business.priceRange,
+  servesCuisine: business.servesCuisine,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: business.streetAddress,
+    addressLocality: business.addressLocality,
+    addressRegion: business.addressRegion,
+    postalCode: business.postalCode,
+    addressCountry: 'US',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
+  },
+  openingHoursSpecification: business.hours.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.days,
+    opens: h.opens,
+    closes: h.closes,
+  })),
+  hasMenu: new URL('/menu/', siteOrigin).href,
+  ...(business.sameAs.length > 0 && { sameAs: business.sameAs }),
+};
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': `${siteOrigin}#website`,
+  name: business.name,
+  url: siteOrigin,
+};
+
+const graph = [restaurantSchema, websiteSchema, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 ---
 
 <!DOCTYPE html>
@@ -55,18 +104,11 @@ const ogImage = new URL('/og-image.jpg', siteOrigin).href;
 
     <title>{title}</title>
 
-    <!-- JSON-LD structured data for restaurants -->
+    <!-- JSON-LD structured data: Restaurant + WebSite (+ page-specific nodes) -->
     <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      name: title,
-      description: description,
-      url: siteOrigin
+      '@context': 'https://schema.org',
+      '@graph': graph,
     })} />
-
-    {jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-    )}
   </head>
   <body>
     <a
@@ -75,6 +117,8 @@ const ogImage = new URL('/og-image.jpg', siteOrigin).href;
     >
       Skip to main content
     </a>
+
+    <PhoneBanner />
 
     <header>
       <slot name="header" />
@@ -85,7 +129,7 @@ const ogImage = new URL('/og-image.jpg', siteOrigin).href;
     </main>
 
     <footer>
-      <slot name="footer" />
+      <Footer />
     </footer>
   </body>
 </html>

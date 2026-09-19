@@ -1,8 +1,126 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import business from '../data/business.json';
+import platterImage from '../assets/pollo-ajo.jpg';
+import tacosImage from '../assets/tacos-Carne-asada.jpg';
+import soupImage from '../assets/Soup-house.jpg';
 ---
 
-<BaseLayout title="Resta — Fine Dining" description="Seasonal ingredients, artisan techniques, and a passion for flavor.">
+<BaseLayout
+  title={`${business.name} | Mexican Restaurant in ${business.addressLocality}, ${business.addressRegion}`}
+  description={`Authentic Mexican cuisine in ${business.addressLocality}. Fresh, made-from-scratch dishes, house specialties, and a warm welcome. View our menu, hours, and location.`}
+>
+  <Nav slot="header" client:load currentPath="/" />
   <Hero />
+
+  <!-- Our Story teaser -->
+  <section class="bg-cream-dark py-20 sm:py-28 px-6">
+    <div class="max-w-5xl mx-auto grid gap-12 md:grid-cols-2 md:items-center">
+      <div class="text-center md:text-left animate-reveal">
+        <span class="inline-block text-gold text-xs tracking-[0.3em] uppercase font-medium mb-4">
+          Our Story
+        </span>
+        <h2 class="font-heading text-3xl sm:text-4xl text-charcoal mb-6">
+          A Small Family Kitchen, Not a Concept
+        </h2>
+        <p class="text-warm-gray leading-relaxed mb-8">
+          Since 1995, Los Mariachis has been a small, family-run kitchen in Baltimore — recipes we grew up with, made the way they've always been made, for a table we're glad to share.
+        </p>
+        <a
+          href="/about/"
+          class="group inline-flex items-center gap-2 text-gold text-sm tracking-wide font-medium border-b border-gold/40 hover:border-gold transition-colors pb-1"
+        >
+          Read Our Story
+          <svg
+            class="w-4 h-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H9" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- A few of the classics that have been on the menu since day one -->
+      <div class="grid grid-cols-2 grid-rows-2 gap-4 h-96 sm:h-[480px] animate-reveal">
+        <div class="row-span-2 overflow-hidden rounded-sm shadow-soft">
+          <Image
+            src={platterImage}
+            alt="Pollo al ajo, grilled chicken in garlic sauce"
+            widths={[320, 480, 640]}
+            sizes="(min-width: 768px) 280px, 45vw"
+            format="webp"
+            quality={78}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="overflow-hidden rounded-sm shadow-soft">
+          <Image
+            src={tacosImage}
+            alt="Carne asada tacos with onions and cilantro"
+            widths={[320, 480, 640]}
+            sizes="(min-width: 768px) 280px, 45vw"
+            format="webp"
+            quality={78}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="overflow-hidden rounded-sm shadow-soft">
+          <Image
+            src={soupImage}
+            alt="Caldo de mariscos with shrimp, fish, mussels, and clams"
+            widths={[320, 480, 640]}
+            sizes="(min-width: 768px) 280px, 45vw"
+            format="webp"
+            quality={78}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-gold py-20 sm:py-24 px-6 text-center">
+    <div class="max-w-2xl mx-auto animate-reveal">
+      <h2 class="font-heading text-3xl sm:text-4xl text-charcoal mb-4">Pull Up a Chair</h2>
+      <p class="text-charcoal/70 mb-10 leading-relaxed">
+        Same recipes, same table, since 1995. Come see what we've been cooking.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/menu/"
+          class="group relative inline-flex items-center gap-2 px-8 py-4 bg-charcoal text-cream font-medium text-sm tracking-wide overflow-hidden transition-[var(--transition-smooth)] hover:bg-charcoal-light active:scale-[0.98]"
+        >
+          <span class="relative z-10">View Menu</span>
+          <svg
+            class="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H9" />
+          </svg>
+        </a>
+        <a
+          href="tel:+1-410-276-5757"
+          class="inline-flex items-center gap-2 px-8 py-4 border border-charcoal/30 text-charcoal text-sm tracking-wide transition-[var(--transition-smooth)] hover:border-charcoal hover:bg-charcoal/10 active:scale-[0.98]"
+        >
+          Call to Order
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,6 +1,8 @@
 {
   "name": "Sopes & Huaraches",
   "order": 50,
+  "image": "huarache-loco-carne-asada.jpg",
+  "imageAlt": "Huarache loco topped with carne asada, lettuce, cream, and cheese",
   "items": [
     {
       "name": "Sopes Sencillos",

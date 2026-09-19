@@ -1,0 +1,19 @@
+{
+  "name": "Los Mariachis",
+  "legalName": "Los Mariachis",
+  "streetAddress": "2227 Eastern Ave",
+  "addressLocality": "Baltimore",
+  "addressRegion": "MD",
+  "postalCode": "21231",
+  "telephone": "+1-410-276-5757",
+  "telephoneDisplay": "(410) 276-5757",
+  "geo": { "latitude": 39.2895, "longitude": -76.60919 },
+  "hours": [
+    { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "11:00", "closes": "22:00" }
+  ],
+  "hoursDisplay": "11:00 AM – 10:00 PM, Every Day",
+  "priceRange": "$$",
+  "servesCuisine": "Mexican",
+  "foundingYear": 1995,
+  "sameAs": []
+}

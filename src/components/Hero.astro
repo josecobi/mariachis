@@ -1,20 +1,24 @@
 ---
-import type { JSX } from 'astro';
 import { Image } from 'astro:assets';
 import heroImage from '../assets/hero.jpg';
+import business from '../data/business.json';
 
 interface Props {
+  eyebrow?: string;
   heading?: string;
+  highlight?: string;
   subheading?: string;
   ctaText?: string;
   ctaLink?: string;
 }
 
 const {
-  heading = 'Where Every Meal Becomes a Memory',
-  subheading = 'Seasonal ingredients, artisan techniques, and a passion for flavor that transforms each dish into an unforgettable experience.',
-  ctaText = 'Reserve a Table',
-  ctaLink = '#reservations'
+  eyebrow = `${business.addressLocality} · Family Owned · Since ${business.foundingYear}`,
+  heading = `${business.name} —`,
+  highlight = `${business.servesCuisine} Restaurant in ${business.addressLocality}, ${business.addressRegion}`,
+  subheading = `Handcrafted recipes, fresh ingredients, and genuine hospitality that brings family and friends together in ${business.addressLocality}.`,
+  ctaText = 'Call to Order',
+  ctaLink = `tel:${business.telephone}`,
 } = Astro.props;
 ---
 
@@ -49,7 +53,7 @@ const {
     <!-- Small decorative label -->
     <div class="animate-load">
       <span class="inline-block text-gold text-xs tracking-[0.3em] uppercase font-medium mb-8">
-        Fine Dining · Since 2024
+        {eyebrow}
       </span>
     </div>
 
@@ -58,15 +62,7 @@ const {
       id="hero-heading"
       class="animate-load animate-load-delay-1 font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-cream leading-[1.1] mb-8"
     >
-      {heading.split(' ').reduce<(string | JSX.Element)[]>((acc, word, i) => {
-        acc.push(word);
-        if (i < heading.split(' ').length - 1) acc.push(' ');
-        return acc;
-      }, []).map((word, i) =>
-        typeof word === 'string' && word.toLowerCase() === ['every', 'becomes', 'memory'].includes(word.toLowerCase())
-          ? <em class="italic text-gold">{word}</em>
-          : word
-      )}
+      {heading} <em class="italic text-gold">{highlight}</em>
     </h1>
 
     <!-- Decorative separator -->

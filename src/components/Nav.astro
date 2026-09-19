@@ -1,0 +1,114 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Menu', href: '/menu/' },
+  { label: 'About Us', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const normalize = (path: string) => (path.length > 1 ? path.replace(/\/$/, '') : path);
+
+const isActive = (href: string) => normalize(currentPath) === normalize(href);
+---
+
+<nav class="bg-charcoal text-cream sticky top-12 md:top-9 z-40 shadow-soft">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo/Brand -->
+      <a href="/" class="flex items-center">
+        <span class="text-2xl font-heading text-gold">Los Mariachis</span>
+      </a>
+
+      <!-- Navigation Links -->
+      <ul class="hidden md:flex space-x-8 items-center">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`font-medium transition-colors ${
+                isActive(item.href)
+                  ? 'text-gold border-b-2 border-gold pb-1'
+                  : 'text-cream hover:text-gold hover:border-b-2 hover:border-gold pb-1'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden text-gold focus:outline-none focus:ring-2 focus:ring-gold rounded p-1"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden md:hidden pb-4 border-t border-charcoal-light"
+    >
+      <ul class="space-y-2 pt-4">
+        {navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class={`block px-4 py-2 rounded transition-colors ${
+                isActive(item.href)
+                  ? 'bg-gold text-charcoal font-medium'
+                  : 'text-cream hover:bg-charcoal-light'
+              }`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when a link is clicked
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+</script>

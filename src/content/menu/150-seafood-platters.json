@@ -2,8 +2,8 @@
   "name": "Seafood Platters",
   "order": 150,
   "note": "All our platters are served with house-made rice, beans, and four corn tortillas.",
-  "image": "camarones-platter-2.jpg",
-  "imageAlt": "Seafood platter served with rice, beans, and corn tortillas",
+  "image": "camarones-fritos-seafood-platter.jpg",
+  "imageAlt": "Fried shrimp platter served with rice, beans, and corn tortillas",
   "items": [
     {
       "name": "Filete Frito",
