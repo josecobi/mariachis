@@ -15,6 +15,8 @@ const menu = defineCollection({
         description: z.string().optional(),
         price: z.number().nonnegative(),
         options: z.string().optional(),
+        image: z.string().optional(),
+        imageAlt: z.string().optional(),
         variants: z
           .array(
             z.object({

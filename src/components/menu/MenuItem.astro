@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Variant {
   label: string;
   price: number;
@@ -11,9 +13,25 @@ interface Props {
   options?: string;
   variants?: Variant[];
   tags?: ('spicy' | 'veggie' | 'house-special' | 'kids')[];
+  image?: string;
+  imageAlt?: string;
 }
 
-const { name, description, price, options, variants, tags } = Astro.props;
+const { name, description, price, options, variants, tags, image, imageAlt } = Astro.props;
+
+let dishImage: ImageMetadata | undefined;
+if (image) {
+  const images = import.meta.glob('../../assets/*.{jpg,jpeg,png,webp}', {
+    eager: true,
+    import: 'default',
+  }) as Record<string, ImageMetadata>;
+
+  const imagePath = `../../assets/${image}`;
+  if (!images[imagePath]) {
+    throw new Error(`Image not found: ${image} (tried ${imagePath})`);
+  }
+  dishImage = images[imagePath];
+}
 
 const formatPrice = (p: number): string => {
   if (p === 0) return '$0.00';
@@ -40,7 +58,23 @@ const badgeStyles: Record<string, string> = {
 };
 ---
 
-<li>
+<li class="flex gap-4">
+  {
+    dishImage && (
+      <Image
+        src={dishImage}
+        alt={imageAlt || ''}
+        width={64}
+        height={64}
+        format="webp"
+        quality={75}
+        loading="lazy"
+        decoding="async"
+        class="w-16 h-16 rounded-sm object-cover flex-shrink-0"
+      />
+    )
+  }
+  <div class="flex-1 min-w-0">
   <div class="flex items-baseline gap-3">
     <h3 class="font-heading text-lg md:text-xl text-charcoal">{name}</h3>
     {
@@ -86,4 +120,5 @@ const badgeStyles: Record<string, string> = {
       </ul>
     )
   }
+  </div>
 </li>

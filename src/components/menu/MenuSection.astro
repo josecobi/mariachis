@@ -9,6 +9,8 @@ interface MenuItem {
   options?: string;
   variants?: { label: string; price: number }[];
   tags?: ('spicy' | 'veggie' | 'house-special' | 'kids')[];
+  image?: string;
+  imageAlt?: string;
 }
 
 interface Props {
@@ -25,7 +27,7 @@ const { id, index, name, note, image, imageAlt, items } = Astro.props;
 
 let imageImport: { default: ImageMetadata } | undefined;
 if (image) {
-  const images = import.meta.glob('../../assets/*.jpg', {
+  const images = import.meta.glob('../../assets/*.{jpg,jpeg,png,webp}', {
     eager: true,
     import: 'default',
   }) as Record<string, ImageMetadata>;

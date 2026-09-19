@@ -4,7 +4,7 @@ media:
 
 content:
   - name: menu
-    label: Menu sections
+    label: Menú (secciones)
     type: collection
     path: src/content/menu
     format: json
@@ -14,56 +14,79 @@ content:
       sort: [order]
     fields:
       - name: name
-        label: Section name
+        label: Nombre de la sección
+        description: Por ejemplo "Tacos", "Sopas" o "Burritos"
         type: string
         required: true
       - name: order
-        label: Order (lower = higher on the page)
+        label: Orden (el número más bajo aparece primero en la página)
         type: number
         required: true
       - name: note
-        label: Note shown under the section title
+        label: Nota debajo del título de la sección
+        description: Texto corto opcional, por ejemplo "Todos los platillos se sirven con arroz y frijoles"
         type: text
       - name: image
-        label: Section photo (filename in src/assets)
-        type: string
+        label: Foto de la sección
+        description: Sube una foto nueva o elige una que ya exista en la carpeta de imágenes
+        type: image
       - name: imageAlt
-        label: Photo description (for screen readers / Google)
+        label: Descripción de la foto de la sección
+        description: Describe lo que se ve en la foto en una frase corta. Ayuda a Google y a personas con lectores de pantalla. Ejemplo — "Tacos de carne asada con cebolla y cilantro"
         type: string
       - name: items
-        label: Dishes
+        label: Platillos de esta sección
+        description: Cada platillo es una tarjeta separada. Usa el botón "+" para agregar uno nuevo.
         type: object
         list: true
+        view:
+          fields: [name, price]
         fields:
           - name: name
-            label: Dish name
+            label: Nombre del platillo
             type: string
             required: true
           - name: description
+            label: Descripción del platillo
+            description: Texto corto opcional que explica el platillo
             type: text
           - name: price
-            label: Price (USD)
+            label: Precio (en dólares, por ejemplo 12.99)
             type: number
           - name: options
-            label: Choices (e.g. "chicken, beef or steak")
+            label: Opciones para elegir
+            description: Por ejemplo — "pollo, res, chorizo o carne asada"
+            type: string
+          - name: image
+            label: Foto del platillo (opcional)
+            description: Solo si quieres mostrar una foto de este platillo en específico, además de la foto de la sección
+            type: image
+          - name: imageAlt
+            label: Descripción de la foto del platillo
+            description: Obligatoria si subiste una foto arriba. Describe lo que se ve, por ejemplo — "Plato de enchiladas verdes con crema y queso"
             type: string
           - name: variants
-            label: Sizes
+            label: Tamaños o presentaciones (opcional)
+            description: Úsalo solo si el platillo tiene precios distintos por tamaño, por ejemplo Chico y Grande
             type: object
             list: true
+            view:
+              fields: [label, price]
             fields:
               - name: label
-                label: Size label
+                label: Nombre del tamaño
+                description: Por ejemplo "Chico" o "Grande"
                 type: string
               - name: price
-                label: Price (USD)
+                label: Precio (en dólares)
                 type: number
           - name: tags
-            label: Tags
+            label: Etiquetas
+            description: Marca las que apliquen a este platillo
             type: select
             list: true
             options:
-              - { value: spicy, label: Spicy }
-              - { value: veggie, label: Vegetarian }
-              - { value: house-special, label: House special }
-              - { value: kids, label: Kids }
+              - { value: spicy, label: Picante }
+              - { value: veggie, label: Vegetariano }
+              - { value: house-special, label: Especialidad de la casa }
+              - { value: kids, label: Menú infantil }
