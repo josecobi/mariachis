@@ -12,6 +12,9 @@ content:
     view:
       fields: [name, order]
       sort: [order]
+      default:
+        sort: order
+        order: asc
     fields:
       - name: name
         label: Nombre de la sección
