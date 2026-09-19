@@ -3,15 +3,35 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
+import Testimonials from '../components/Testimonials.astro';
 import business from '../data/business.json';
+import testimonials from '../data/testimonials.json';
 import platterImage from '../assets/pollo-ajo.jpg';
 import tacosImage from '../assets/tacos-Carne-asada.jpg';
 import soupImage from '../assets/Soup-house.jpg';
+
+const siteOrigin = Astro.site?.href ?? 'https://localhost:4321';
+
+// Individual Review nodes for the testimonials shown below. No AggregateRating is
+// emitted here since these 5 quotes are a curated subset, not the restaurant's full
+// Google review count/average — claiming an aggregate from a subset would misrepresent it.
+const reviewSchema = testimonials.map((review) => ({
+  '@type': 'Review',
+  itemReviewed: { '@id': `${siteOrigin}#restaurant` },
+  author: { '@type': 'Person', name: review.author },
+  reviewRating: {
+    '@type': 'Rating',
+    ratingValue: review.rating,
+    bestRating: 5,
+  },
+  reviewBody: review.text,
+}));
 ---
 
 <BaseLayout
   title={`${business.name} | Mexican Restaurant in ${business.addressLocality}, ${business.addressRegion}`}
   description={`Authentic Mexican cuisine in ${business.addressLocality}. Fresh, made-from-scratch dishes, house specialties, and a warm welcome. View our menu, hours, and location.`}
+  jsonLd={reviewSchema}
 >
   <Nav slot="header" client:load currentPath="/" />
   <Hero />
@@ -27,7 +47,7 @@ import soupImage from '../assets/Soup-house.jpg';
           A Small Family Kitchen, Not a Concept
         </h2>
         <p class="text-warm-gray leading-relaxed mb-8">
-          Since 1995, Los Mariachis has been a small, family-run kitchen in Baltimore — recipes we grew up with, made the way they've always been made, for a table we're glad to share.
+          Since {business.foundingYear}, Los Mariachis has been a small, family-run kitchen in Baltimore — recipes we grew up with, made the way they've always been made, for a table we're glad to share.
         </p>
         <a
           href="/about/"
@@ -91,12 +111,14 @@ import soupImage from '../assets/Soup-house.jpg';
     </div>
   </section>
 
+  <Testimonials />
+
   <!-- Closing CTA -->
   <section class="bg-gold py-20 sm:py-24 px-6 text-center">
     <div class="max-w-2xl mx-auto animate-reveal">
       <h2 class="font-heading text-3xl sm:text-4xl text-charcoal mb-4">Pull Up a Chair</h2>
       <p class="text-charcoal/70 mb-10 leading-relaxed">
-        Same recipes, same table, since 1995. Come see what we've been cooking.
+        Same recipes, same table, since {business.foundingYear}. Come see what we've been cooking.
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
         <a

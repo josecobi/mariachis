@@ -15,7 +15,7 @@ import business from '../data/business.json';
       <!-- Header -->
       <div class="text-center space-y-4 animate-load">
         <span class="inline-block text-gold text-xs tracking-[0.3em] uppercase font-medium">
-          Baltimore · Family Owned · Since 1995
+          {business.addressLocality} · Family Owned · Since {business.foundingYear}
         </span>
         <h1 class="text-5xl sm:text-6xl font-heading text-charcoal">About Los Mariachis</h1>
         <div class="flex items-center justify-center gap-4 py-1">
@@ -33,7 +33,7 @@ import business from '../data/business.json';
         <div>
           <h2 class="text-3xl font-heading text-charcoal mb-4">Our Story</h2>
           <p class="text-warm-gray leading-relaxed mb-4">
-            Los Mariachis started as a small family kitchen, not a business plan. Since 1995, the same recipes have been simmering on our stove — the ones we grew up eating, made the way they've always been made, one dish at a time.
+            Los Mariachis started as a small family kitchen, not a business plan. Since {business.foundingYear}, the same recipes have been simmering on our stove — the ones we grew up eating, made the way they've always been made, one dish at a time.
           </p>
           <p class="text-warm-gray leading-relaxed">
             The name comes from something bigger than food: the spirit of celebration and togetherness that runs through every gathering in Mexican culture. Pull up a chair, and for a little while, you're part of that too.

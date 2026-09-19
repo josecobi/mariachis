@@ -17,7 +17,7 @@ const normalize = (path: string) => (path.length > 1 ? path.replace(/\/$/, '') :
 const isActive = (href: string) => normalize(currentPath) === normalize(href);
 ---
 
-<nav class="bg-charcoal text-cream sticky top-12 md:top-9 z-40 shadow-soft">
+<nav class="bg-charcoal text-cream shadow-soft">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo/Brand -->

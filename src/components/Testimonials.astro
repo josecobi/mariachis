@@ -1,0 +1,42 @@
+---
+import testimonials from '../data/testimonials.json';
+---
+
+<section class="bg-cream py-20 sm:py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-14 animate-reveal">
+      <span class="inline-block text-gold text-xs tracking-[0.3em] uppercase font-medium mb-4">
+        Google Reviews
+      </span>
+      <h2 class="font-heading text-3xl sm:text-4xl text-charcoal">
+        What Our Guests Say
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {testimonials.map((review) => (
+        <div class="bg-cream-dark p-6 flex flex-col gap-4 animate-reveal">
+          <div class="flex items-center gap-1" aria-label={`${review.rating} out of 5 stars`}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <svg
+                class={`w-4 h-4 ${i < review.rating ? 'text-gold' : 'text-warm-gray-light'}`}
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path d="M10 1.5l2.7 5.86 6.3.73-4.68 4.53 1.16 6.38L10 15.9l-5.48 3.1 1.16-6.38L1 8.09l6.3-.73L10 1.5z" />
+              </svg>
+            ))}
+          </div>
+          <p class="text-warm-gray leading-relaxed text-sm flex-1">
+            "{review.text}"
+          </p>
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-medium text-charcoal">{review.author}</span>
+            <span class="text-warm-gray-light">{review.relativeTime}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
