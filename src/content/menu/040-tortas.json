@@ -1,0 +1,69 @@
+{
+  "name": "Tortas",
+  "order": 40,
+  "note": "All our tortas are stacked with layers of refried beans, mayo, fresh lettuce, tomatoes, onions, and jalapeño peppers.",
+  "image": "cuban.jpg",
+  "imageAlt": "Cubana torta with breaded beef, ham, scrambled eggs, and Mexican sausage",
+  "items": [
+    {
+      "name": "Milanesa de Pollo",
+      "description": "Breaded chicken breast.",
+      "price": 0
+    },
+    {
+      "name": "Milanesa de Res",
+      "description": "Breaded beef steak.",
+      "price": 0
+    },
+    {
+      "name": "Carne Asada",
+      "description": "Grilled steak.",
+      "price": 0
+    },
+    {
+      "name": "Pollo Asado",
+      "description": "Grilled chicken.",
+      "price": 0
+    },
+    {
+      "name": "Cheese Steak",
+      "price": 0
+    },
+    {
+      "name": "Carne Enchilada",
+      "description": "Marinated pork.",
+      "price": 0
+    },
+    {
+      "name": "Jamón y Queso",
+      "description": "Ham and cheese.",
+      "price": 0
+    },
+    {
+      "name": "Huevo y Queso",
+      "description": "Eggs and cheese.",
+      "price": 0
+    },
+    {
+      "name": "Huevos y Chorizo",
+      "description": "Eggs and Mexican sausage.",
+      "price": 0
+    },
+    {
+      "name": "Hawaiiana",
+      "description": "Ham combined with the sweetness of pineapple and melted cheese.",
+      "price": 0
+    },
+    {
+      "name": "Cubana",
+      "description": "Filled with breaded beef, ham, scrambled eggs, and Mexican sausage with melted cheese.",
+      "price": 0,
+      "tags": ["house-special"]
+    },
+    {
+      "name": "Rusa",
+      "description": "Breaded chicken, ham, fresh cheese, and the sweetness of pineapple.",
+      "price": 0
+    }
+  ]
+}

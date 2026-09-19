@@ -1,0 +1,17 @@
+{
+  "name": "Quesadillas",
+  "order": 60,
+  "note": "Made with grilled corn dough, stuffed with your choice of filling. Topped with cheese, lettuce, and cream.",
+  "items": [
+    {
+      "name": "2 Quesadillas",
+      "price": 0,
+      "options": "cheese, mushrooms, Mexican sausage, chicken, steak, tinga or ham"
+    },
+    {
+      "name": "2 Quesadillas de Camarón",
+      "description": "Shrimp quesadillas topped with lettuce, cream, and cheese.",
+      "price": 0
+    }
+  ]
+}

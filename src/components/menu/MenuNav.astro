@@ -1,0 +1,37 @@
+---
+interface Section {
+  id: string;
+  name: string;
+}
+
+interface Props {
+  sections: Section[];
+}
+
+const { sections } = Astro.props;
+---
+
+<nav
+  aria-label="Menu sections"
+  class="sticky top-0 z-20 bg-cream/95 backdrop-blur border-y border-charcoal/10"
+>
+  <ul
+    class="max-w-5xl mx-auto px-6 flex gap-7 overflow-x-auto py-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+  >
+    {
+      sections.map((section) => (
+        <li>
+          <a
+            href={`#${section.id}`}
+            class="whitespace-nowrap text-xs uppercase tracking-[0.18em] text-warm-gray hover:text-charcoal transition-colors"
+          >
+            {section.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div
+    class="pointer-events-none absolute right-0 inset-y-0 w-10 bg-gradient-to-l from-cream lg:hidden"
+  />
+</nav>

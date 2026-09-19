@@ -1,0 +1,47 @@
+{
+  "name": "Appetizers",
+  "order": 10,
+  "image": "nachos-pico.jpg",
+  "imageAlt": "Classic nachos topped with melted Monterey Jack cheese, jalapeños, pico de gallo, and fresh cheese",
+  "items": [
+    {
+      "name": "Classic Nachos",
+      "description": "Topped with melted Monterey Jack cheese, beans, and jalapeños. Served with house-made pico de gallo, lettuce, sour cream, and a sprinkle of fresh cheese.",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Classic Nachos with Meat",
+      "price": 0,
+      "options": "chicken, beef, Mexican sausage or marinated pork"
+    },
+    {
+      "name": "Chips & Pico de Gallo",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Chips & Guacamole",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "French Fries",
+      "price": 0,
+      "variants": [
+        { "label": "Small", "price": 0 },
+        { "label": "Large", "price": 0 }
+      ]
+    },
+    {
+      "name": "Grilled Mexican Fresh Cheese",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Grilled Veggies",
+      "price": 0,
+      "tags": ["veggie"]
+    }
+  ]
+}

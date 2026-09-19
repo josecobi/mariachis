@@ -1,0 +1,42 @@
+{
+  "name": "Sides",
+  "order": 200,
+  "items": [
+    {
+      "name": "Guacamole",
+      "price": 0
+    },
+    {
+      "name": "Pico de Gallo",
+      "price": 0
+    },
+    {
+      "name": "Crema",
+      "description": "Cream.",
+      "price": 0
+    },
+    {
+      "name": "Queso",
+      "description": "Cheese.",
+      "price": 0
+    },
+    {
+      "name": "Arroz y Frijoles",
+      "description": "Rice and beans.",
+      "price": 0,
+      "variants": [
+        { "label": "Small", "price": 0 },
+        { "label": "Large", "price": 0 }
+      ]
+    },
+    {
+      "name": "House Salad",
+      "description": "Tomatoes, onions, cucumbers, green peppers, and house dressing.",
+      "price": 0,
+      "variants": [
+        { "label": "Small", "price": 0 },
+        { "label": "Large", "price": 0 }
+      ]
+    }
+  ]
+}

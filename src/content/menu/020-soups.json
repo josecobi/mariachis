@@ -1,0 +1,40 @@
+{
+  "name": "Soups",
+  "order": 20,
+  "note": "All our soups are served with a side of lime, cilantro, and onions.",
+  "image": "Soup-house.jpg",
+  "imageAlt": "Caldo de mariscos with shrimp, fish, mussels and clams in a rich broth",
+  "items": [
+    {
+      "name": "Coctel de Camarones",
+      "description": "Mexican shrimp cocktail in a tangy tomato sauce with meaty shrimp, slices of avocado, and fresh chopped cilantro and onions.",
+      "price": 0
+    },
+    {
+      "name": "Pozole",
+      "description": "White chicken pozole made with white hominy. Served with two crispy corn tortillas, lettuce, onions, and fresh radish on the side.",
+      "price": 0
+    },
+    {
+      "name": "Caldo de Pollo",
+      "description": "Hearty chicken soup with lots of vegetables. Served with corn tortillas.",
+      "price": 0
+    },
+    {
+      "name": "Caldo de Res",
+      "description": "Beef and vegetable broth. Served with corn tortillas.",
+      "price": 0
+    },
+    {
+      "name": "Caldo de Camarón",
+      "description": "Hearty shrimp broth. Served with corn tortillas.",
+      "price": 0
+    },
+    {
+      "name": "Caldo de Mariscos",
+      "description": "Our famous seafood soup with shrimp, fish, mussels, clams, and calamari. Served with corn tortillas.",
+      "price": 0,
+      "tags": ["house-special"]
+    }
+  ]
+}

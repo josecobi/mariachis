@@ -1,0 +1,22 @@
+{
+  "name": "Chilaquiles",
+  "order": 90,
+  "note": "Crispy tortilla chips in mild spicy green or red sauce. Topped with cream, lettuce, and cheese.",
+  "items": [
+    {
+      "name": "Sencillos",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Con Carne",
+      "price": 0,
+      "options": "marinated pork, Mexican sausage, chicken or steak"
+    },
+    {
+      "name": "Con Huevo",
+      "description": "With two eggs made your way.",
+      "price": 0
+    }
+  ]
+}

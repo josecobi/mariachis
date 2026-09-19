@@ -1,0 +1,24 @@
+{
+  "name": "Tacos",
+  "order": 30,
+  "note": "Three corn tacos filled with your choice of meat, garnished with onions and cilantro. Green or red salsa on the side.",
+  "image": "tacos-Carne-asada.jpg",
+  "imageAlt": "Carne asada tacos with grilled steak, onions, and cilantro",
+  "items": [
+    {
+      "name": "Tacos",
+      "price": 0,
+      "options": "marinated pork, chicken, Mexican sausage or steak"
+    },
+    {
+      "name": "Tacos de Lengua",
+      "description": "Beef tongue.",
+      "price": 0
+    },
+    {
+      "name": "Tacos Mixtos",
+      "description": "Three tacos, each with a different meat.",
+      "price": 0
+    }
+  ]
+}

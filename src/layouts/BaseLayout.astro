@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Page-specific JSON-LD to inject in addition to the base Restaurant schema. */
+  jsonLd?: object;
+}
+
+const { title, description = 'An exquisite dining experience crafted with passion and precision.', jsonLd } = Astro.props;
+
+const siteOrigin = Astro.site?.href ?? 'https://localhost:4321';
+
+/** Safe access to the current page path — Astro.url throws when site is not configured. */
+let currentPage = '/';
+try {
+  currentPage = Astro.url?.pathname ?? '/';
+} catch {
+  // Astro.url throws in static mode without a site configured — use fallback
+}
+
+const canonical = new URL(currentPage, siteOrigin).href;
+const ogImage = new URL('/og-image.jpg', siteOrigin).href;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Preconnect to Google Fonts for parallel loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+
+    <!-- JSON-LD structured data for restaurants -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      name: title,
+      description: description,
+      url: siteOrigin
+    })} />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-gold focus:text-charcoal focus:font-medium"
+    >
+      Skip to main content
+    </a>
+
+    <header>
+      <slot name="header" />
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer>
+      <slot name="footer" />
+    </footer>
+  </body>
+</html>

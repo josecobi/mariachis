@@ -1,0 +1,89 @@
+---
+interface Variant {
+  label: string;
+  price: number;
+}
+
+interface Props {
+  name: string;
+  description?: string;
+  price: number;
+  options?: string;
+  variants?: Variant[];
+  tags?: ('spicy' | 'veggie' | 'house-special' | 'kids')[];
+}
+
+const { name, description, price, options, variants, tags } = Astro.props;
+
+const formatPrice = (p: number): string => {
+  if (p === 0) return '$0.00';
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
+  }).format(p);
+};
+
+const badgeLabels: Record<string, string> = {
+  spicy: 'Spicy',
+  veggie: 'Veggie',
+  'house-special': 'House Special',
+  kids: 'Kids',
+};
+
+const badgeStyles: Record<string, string> = {
+  spicy: 'border-terracotta/50 text-terracotta',
+  veggie: 'border-gold-dark/50 text-gold-dark',
+  'house-special': 'bg-charcoal text-cream border-charcoal',
+  kids: 'border-warm-gray/50 text-warm-gray',
+};
+---
+
+<li>
+  <div class="flex items-baseline gap-3">
+    <h3 class="font-heading text-lg md:text-xl text-charcoal">{name}</h3>
+    {
+      tags &&
+        tags.map((tag) => (
+          <span
+            class={`text-[10px] uppercase tracking-[0.15em] px-1.5 py-0.5 border rounded-sm leading-none ${badgeStyles[tag]}`}
+          >
+            {badgeLabels[tag]}
+          </span>
+        ))
+    }
+    {
+      !variants && (
+        <>
+          <span
+            aria-hidden="true"
+            class="flex-1 border-b border-dotted border-charcoal/30 -translate-y-1"
+          />
+          <span class="text-charcoal font-medium tabular-nums">
+            {formatPrice(price)}
+          </span>
+        </>
+      )
+    }
+  </div>
+  {description && <p class="mt-1.5 text-sm text-warm-gray leading-relaxed">{description}</p>}
+  {
+    options && (
+      <p class="mt-1.5 text-xs text-terracotta tracking-wide">
+        <span class="uppercase tracking-[0.15em]">Choose</span> · {options}
+      </p>
+    )
+  }
+  {
+    variants && (
+      <ul class="mt-1.5 flex flex-wrap gap-x-5 text-sm text-charcoal tabular-nums" role="list">
+        {variants.map((v) => (
+          <li>
+            {v.label} {formatPrice(v.price)}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</li>

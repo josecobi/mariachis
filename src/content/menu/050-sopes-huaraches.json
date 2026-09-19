@@ -1,0 +1,23 @@
+{
+  "name": "Sopes & Huaraches",
+  "order": 50,
+  "items": [
+    {
+      "name": "Sopes Sencillos",
+      "description": "Three oval corn-dough sopes garnished with fresh lettuce, cheese, and cream.",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Sopes con Carne",
+      "price": 0,
+      "options": "Mexican sausage, chicken, steak or marinated pork"
+    },
+    {
+      "name": "Huarache Loco",
+      "description": "Topped with your favorite meat, scrambled eggs, lettuce, cream, and cheese. Served with rice and beans.",
+      "price": 0,
+      "tags": ["house-special"]
+    }
+  ]
+}

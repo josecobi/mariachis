@@ -1,0 +1,16 @@
+{
+  "name": "Kids Menu",
+  "order": 190,
+  "image": "Chicken-Nugets-Kids-Menu.jpg",
+  "imageAlt": "Chicken nuggets served with sides for kids",
+  "items": [
+    {
+      "name": "Chicken Tenders with Fries",
+      "price": 0
+    },
+    {
+      "name": "Chicken Nuggets",
+      "price": 0
+    }
+  ]
+}

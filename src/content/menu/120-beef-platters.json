@@ -1,0 +1,34 @@
+{
+  "name": "Beef Platters",
+  "order": 120,
+  "note": "All our platters are served with house-made rice, beans, and four corn tortillas.",
+  "image": "carne-asada-platter.jpg",
+  "imageAlt": "Grilled steak platter served with rice, beans, and corn tortillas",
+  "items": [
+    {
+      "name": "Bistec a la Mexicana",
+      "description": "Steak cooked with jalapeños, onions, and fresh tomatoes.",
+      "price": 0
+    },
+    {
+      "name": "Bistec Encebollado",
+      "description": "Steak with sautéed onions.",
+      "price": 0
+    },
+    {
+      "name": "Bistec Entomatado",
+      "description": "Tender steak tossed in fresh tomato sauce.",
+      "price": 0
+    },
+    {
+      "name": "Fajitas de Bistec",
+      "description": "Steak fajitas with sautéed onions, green peppers, and fresh tomatoes.",
+      "price": 0
+    },
+    {
+      "name": "Bistec en Salsa Verde",
+      "description": "Skirt steak in green sauce.",
+      "price": 0
+    }
+  ]
+}

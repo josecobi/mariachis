@@ -1,0 +1,45 @@
+{
+  "name": "Veggie Menu",
+  "order": 180,
+  "note": "Healthy and flavorful. All our veggie dishes are made with the same grilled vegetables: squash, potatoes, carrots, onions, green peppers, and string beans.",
+  "image": "Veggie-menu-enchiladas-vegetales.jpg",
+  "imageAlt": "Veggie enchiladas topped with cheese and fresh vegetables",
+  "items": [
+    {
+      "name": "3 Sopes",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "2 Quesadillas",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "3 Tostadas",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Veggie Burrito",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Veggie Nachos",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "4 Enchiladas",
+      "description": "Topped with your favorite sauce: green, red, or mole.",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "3 Veggie Tacos",
+      "price": 0,
+      "tags": ["veggie"]
+    }
+  ]
+}

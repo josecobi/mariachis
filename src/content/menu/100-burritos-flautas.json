@@ -1,0 +1,19 @@
+{
+  "name": "Burritos & Flautas",
+  "order": 100,
+  "image": "burrito.jpg",
+  "imageAlt": "Burrito filled with meat, lettuce, tomato, onions, beans, cheese, and rice",
+  "items": [
+    {
+      "name": "Burrito",
+      "description": "Handmade to order with your favorite meat. Filled with lettuce, tomato, onions, beans, cheese, and rice, wrapped in a warm flour tortilla.",
+      "price": 0,
+      "options": "Mexican sausage, chicken, steak or marinated pork"
+    },
+    {
+      "name": "Flautas",
+      "description": "Four crispy fried tacos filled with cheese or chicken. Topped with lettuce, cream, and cheese.",
+      "price": 0
+    }
+  ]
+}

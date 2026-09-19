@@ -1,0 +1,120 @@
+---
+import type { JSX } from 'astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero.jpg';
+
+interface Props {
+  heading?: string;
+  subheading?: string;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const {
+  heading = 'Where Every Meal Becomes a Memory',
+  subheading = 'Seasonal ingredients, artisan techniques, and a passion for flavor that transforms each dish into an unforgettable experience.',
+  ctaText = 'Reserve a Table',
+  ctaLink = '#reservations'
+} = Astro.props;
+---
+
+<section
+  class="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal"
+  aria-labelledby="hero-heading"
+>
+  <!-- Background hero image (LCP element) -->
+  <Image
+    src={heroImage}
+    alt=""
+    widths={[640, 1024, 1600, 2400]}
+    sizes="100vw"
+    format="webp"
+    quality={80}
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover"
+    aria-hidden="true"
+  />
+
+  <!-- Darkening gradient overlay for text legibility -->
+  <div class="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/60" />
+  <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 30% 40%, var(--color-gold) 0%, transparent 50%), radial-gradient(circle at 70% 60%, var(--color-gold) 0%, transparent 50%);" />
+
+  <!-- Decorative gold line top -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-40" />
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+    <!-- Small decorative label -->
+    <div class="animate-load">
+      <span class="inline-block text-gold text-xs tracking-[0.3em] uppercase font-medium mb-8">
+        Fine Dining · Since 2024
+      </span>
+    </div>
+
+    <!-- Main heading -->
+    <h1
+      id="hero-heading"
+      class="animate-load animate-load-delay-1 font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-cream leading-[1.1] mb-8"
+    >
+      {heading.split(' ').reduce<(string | JSX.Element)[]>((acc, word, i) => {
+        acc.push(word);
+        if (i < heading.split(' ').length - 1) acc.push(' ');
+        return acc;
+      }, []).map((word, i) =>
+        typeof word === 'string' && word.toLowerCase() === ['every', 'becomes', 'memory'].includes(word.toLowerCase())
+          ? <em class="italic text-gold">{word}</em>
+          : word
+      )}
+    </h1>
+
+    <!-- Decorative separator -->
+    <div class="animate-load animate-load-delay-1 flex items-center justify-center gap-4 mb-8">
+      <span class="h-px w-12 bg-gold opacity-40" />
+      <span class="w-2 h-2 rounded-full bg-gold opacity-60" />
+      <span class="h-px w-12 bg-gold opacity-40" />
+    </div>
+
+    <!-- Subheading -->
+    <p class="animate-load animate-load-delay-2 text-lg sm:text-xl text-warm-gray-light max-w-2xl mx-auto mb-12 leading-relaxed">
+      {subheading}
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="animate-load animate-load-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a
+        href={ctaLink}
+        class="group relative inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal font-medium text-sm tracking-wide overflow-hidden transition-[var(--transition-smooth)] hover:bg-gold-light active:scale-[0.98]"
+      >
+        <span class="relative z-10">{ctaText}</span>
+        <svg
+          class="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H9" />
+        </svg>
+      </a>
+      <a
+        href="/menu/"
+        class="inline-flex items-center gap-2 px-8 py-4 border border-gold/30 text-gold text-sm tracking-wide transition-[var(--transition-smooth)] hover:border-gold hover:bg-gold/10 active:scale-[0.98]"
+      >
+        View Menu
+      </a>
+    </div>
+  </div>
+
+  <!-- Decorative gold line bottom -->
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-40" />
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-load animate-load-delay-3">
+    <div class="flex flex-col items-center gap-2 text-gold/40">
+      <span class="text-xs tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-8 bg-gradient-to-b from-gold/40 to-transparent" />
+    </div>
+  </div>
+</section>

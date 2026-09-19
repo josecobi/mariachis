@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MenuNav from '../components/menu/MenuNav.astro';
+import MenuSection from '../components/menu/MenuSection.astro';
+
+// Get all menu sections, sorted by order
+const menuSections = await getCollection('menu');
+const sections = menuSections.sort((a, b) => a.data.order - b.data.order);
+
+// Build navigation data
+const navSections = sections.map((s) => ({
+  id: s.id,
+  name: s.data.name,
+}));
+
+// Build Menu JSON-LD schema
+const menuSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  name: 'Los Mariachis Menu',
+  url: new URL('/menu/', Astro.site).href,
+  hasMenuSection: sections.map((s) => ({
+    '@type': 'MenuSection',
+    name: s.data.name,
+    description: s.data.note,
+    hasMenuItem: s.data.items.map((i) => ({
+      '@type': 'MenuItem',
+      name: i.name,
+      description: i.description,
+      ...(i.price > 0 && {
+        offers: {
+          '@type': 'Offer',
+          price: i.price,
+          priceCurrency: 'USD',
+        },
+      }),
+    })),
+  })),
+};
+---
+
+<BaseLayout
+  title="Menu | Los Mariachis, CITY"
+  description="Full menu for Los Mariachis in CITY: tacos, platters, seafood, vegetarian dishes, kids' menu, and daily specials with current prices."
+  jsonLd={menuSchema}
+>
+  <!-- Intro band -->
+  <section class="bg-cream pt-28 pb-16 text-center px-6">
+    <div class="max-w-3xl mx-auto">
+      <span class="inline-block text-terracotta text-xs tracking-[0.3em] uppercase font-medium mb-6">
+        Family Owned · Made from Scratch
+      </span>
+
+      <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl text-charcoal leading-[1.05] mb-6">
+        Our Menu
+      </h1>
+
+      <!-- Decorative separator -->
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <span class="h-px w-12 bg-terracotta opacity-40" />
+        <span class="w-2 h-2 rounded-full bg-terracotta opacity-60" />
+        <span class="h-px w-12 bg-terracotta opacity-40" />
+      </div>
+
+      <p class="text-lg text-warm-gray max-w-xl mx-auto leading-relaxed">
+        Recipes our family has cooked for years — house-made rice and beans, fresh salsas, and tortillas
+        warmed to order.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sticky menu nav -->
+  <MenuNav sections={navSections} />
+
+  <!-- Menu sections -->
+  <div class="bg-cream max-w-5xl mx-auto px-6 py-8">
+    {
+      sections.map((section, index) => (
+        <MenuSection
+          id={section.id}
+          index={index + 1}
+          name={section.data.name}
+          note={section.data.note}
+          image={section.data.image}
+          imageAlt={section.data.imageAlt}
+          items={section.data.items}
+        />
+      ))
+    }
+  </div>
+
+  <!-- Closing band -->
+  <section class="bg-cream-dark py-16 px-6 text-center">
+    <div class="max-w-2xl mx-auto">
+      <p class="font-heading text-2xl md:text-3xl text-charcoal mb-4">
+        Questions about allergies or a dish? Just ask.
+      </p>
+      <p class="text-sm text-warm-gray mb-8">
+        Prices subject to change. Some items may not be available every day.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="tel:+1-TODO"
+          class="group relative inline-flex items-center gap-2 px-8 py-4 bg-terracotta text-cream font-medium text-sm tracking-wide overflow-hidden transition-colors hover:bg-terracotta/90 active:scale-[0.98]"
+        >
+          <span class="relative z-10">Call Us</span>
+        </a>
+        <a
+          href="/contact/"
+          class="inline-flex items-center gap-2 px-8 py-4 border border-terracotta/40 text-terracotta text-sm tracking-wide transition-colors hover:border-terracotta hover:bg-terracotta/10 active:scale-[0.98]"
+        >
+          Hours & Directions
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

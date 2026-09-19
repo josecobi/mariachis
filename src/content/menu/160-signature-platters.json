@@ -1,0 +1,13 @@
+{
+  "name": "Signature Platters",
+  "order": 160,
+  "note": "All our platters are served with house-made rice, beans, and four corn tortillas.",
+  "items": [
+    {
+      "name": "Fajitas Mixtas",
+      "description": "A fusion of fresh sautéed steak, chicken, and shrimp.",
+      "price": 0,
+      "tags": ["house-special"]
+    }
+  ]
+}

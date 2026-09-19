@@ -1,0 +1,28 @@
+{
+  "name": "Tostadas",
+  "order": 70,
+  "note": "Three crispy corn tortillas topped with refried beans, lettuce, cheese, and cream.",
+  "items": [
+    {
+      "name": "Sencillas",
+      "description": "No meat.",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Especiales",
+      "price": 0,
+      "options": "Mexican sausage, chicken, steak or marinated pork"
+    },
+    {
+      "name": "Tinga",
+      "description": "Shredded chicken with sliced onions in a tomato-chipotle sauce.",
+      "price": 0
+    },
+    {
+      "name": "Camarón",
+      "description": "Shrimp.",
+      "price": 0
+    }
+  ]
+}

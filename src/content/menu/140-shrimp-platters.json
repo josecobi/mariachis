@@ -1,0 +1,30 @@
+{
+  "name": "Shrimp Platters",
+  "order": 140,
+  "note": "All our platters are served with house-made rice, beans, and four corn tortillas.",
+  "image": "camarones-platter.jpg",
+  "imageAlt": "Shrimp platter served with rice, beans, and corn tortillas",
+  "items": [
+    {
+      "name": "Camarones a la Mexicana",
+      "description": "Sautéed shrimp with jalapeños, onions, and tomato.",
+      "price": 0
+    },
+    {
+      "name": "Camarones Encebollados",
+      "description": "Tender shrimp with sautéed onions.",
+      "price": 0
+    },
+    {
+      "name": "Camarones al Mojo de Ajo",
+      "description": "Shrimp sautéed in garlic butter sauce.",
+      "price": 0
+    },
+    {
+      "name": "Camarones a la Diabla",
+      "description": "Shrimp tossed in a diabolically hot tomato sauce.",
+      "price": 0,
+      "tags": ["spicy"]
+    }
+  ]
+}

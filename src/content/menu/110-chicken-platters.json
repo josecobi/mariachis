@@ -1,0 +1,34 @@
+{
+  "name": "Chicken Platters",
+  "order": 110,
+  "note": "All our platters are served with house-made rice, beans, and four corn tortillas.",
+  "image": "pollo-ajo.jpg",
+  "imageAlt": "Chicken breast tossed in garlic butter sauce served with rice, beans, and corn tortillas",
+  "items": [
+    {
+      "name": "Pechuga al Mojo de Ajo",
+      "description": "Chicken breast tossed in garlic butter sauce.",
+      "price": 0
+    },
+    {
+      "name": "Pechuga a la Mexicana",
+      "description": "Chicken breast with jalapeños, onions, and fresh tomato sauce.",
+      "price": 0
+    },
+    {
+      "name": "Pechuga Entomatada",
+      "description": "Marinated chicken breast cooked tender and juicy in fresh tomato sauce.",
+      "price": 0
+    },
+    {
+      "name": "Fajitas de Pollo",
+      "description": "Chicken fajitas with sautéed onions, green peppers, and fresh tomatoes.",
+      "price": 0
+    },
+    {
+      "name": "Pechuga en Salsa Verde",
+      "description": "Grilled chicken breast in green sauce.",
+      "price": 0
+    }
+  ]
+}

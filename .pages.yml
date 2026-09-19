@@ -1,0 +1,69 @@
+media:
+  input: src/assets
+  output: /src/assets
+
+content:
+  - name: menu
+    label: Menu sections
+    type: collection
+    path: src/content/menu
+    format: json
+    filename: '{fields.order}-{fields.name}.json'
+    view:
+      fields: [name, order]
+      sort: [order]
+    fields:
+      - name: name
+        label: Section name
+        type: string
+        required: true
+      - name: order
+        label: Order (lower = higher on the page)
+        type: number
+        required: true
+      - name: note
+        label: Note shown under the section title
+        type: text
+      - name: image
+        label: Section photo (filename in src/assets)
+        type: string
+      - name: imageAlt
+        label: Photo description (for screen readers / Google)
+        type: string
+      - name: items
+        label: Dishes
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: Dish name
+            type: string
+            required: true
+          - name: description
+            type: text
+          - name: price
+            label: Price (USD)
+            type: number
+          - name: options
+            label: Choices (e.g. "chicken, beef or steak")
+            type: string
+          - name: variants
+            label: Sizes
+            type: object
+            list: true
+            fields:
+              - name: label
+                label: Size label
+                type: string
+              - name: price
+                label: Price (USD)
+                type: number
+          - name: tags
+            label: Tags
+            type: select
+            list: true
+            options:
+              - { value: spicy, label: Spicy }
+              - { value: veggie, label: Vegetarian }
+              - { value: house-special, label: House special }
+              - { value: kids, label: Kids }

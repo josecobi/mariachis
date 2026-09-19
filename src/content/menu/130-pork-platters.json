@@ -1,0 +1,20 @@
+{
+  "name": "Pork Platters",
+  "order": 130,
+  "note": "All our platters are served with house-made rice, beans, and four corn tortillas.",
+  "image": "Costillas-en-salsa-verde.jpg",
+  "imageAlt": "Pork ribs in green sauce served with rice, beans, and corn tortillas",
+  "items": [
+    {
+      "name": "Costillas en Salsa Verde",
+      "description": "Pork ribs in a mildly spicy green sauce.",
+      "price": 0,
+      "tags": ["house-special"]
+    },
+    {
+      "name": "Chicharrón",
+      "description": "Fried pork skin in our mild house-made sauce, red or green.",
+      "price": 0
+    }
+  ]
+}

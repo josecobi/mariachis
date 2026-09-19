@@ -1,0 +1,45 @@
+{
+  "name": "House Specials",
+  "order": 170,
+  "note": "Our house specials are served with house-made rice, beans, and a fresh house salad.",
+  "image": "House-speciality-Pechuga-Rellena.jpg",
+  "imageAlt": "Chicken breast stuffed with cheese and ham served with grilled vegetables",
+  "items": [
+    {
+      "name": "Pechuga Asada",
+      "description": "Marinated chicken breast grilled to tender, juicy perfection.",
+      "price": 0
+    },
+    {
+      "name": "Milanesa de Pollo",
+      "description": "Breaded boneless, skinless chicken breast.",
+      "price": 0
+    },
+    {
+      "name": "Pechuga Rellena",
+      "description": "Chicken breast stuffed with cheese and ham. Includes grilled vegetables.",
+      "price": 0,
+      "tags": ["house-special"]
+    },
+    {
+      "name": "Carne Asada",
+      "description": "Tender grilled steak.",
+      "price": 0
+    },
+    {
+      "name": "Milanesa de Res",
+      "description": "Breaded beef steak, golden brown.",
+      "price": 0
+    },
+    {
+      "name": "Carne Enchilada",
+      "description": "Marinated pork.",
+      "price": 0
+    },
+    {
+      "name": "Chuleta Como a Ti Te Gusta",
+      "description": "Pork chops cooked to order your way, grilled or stewed.",
+      "price": 0
+    }
+  ]
+}

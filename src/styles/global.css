@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Colors ───────────────────────────────── */
+  --color-cream:     #FAF6F1;
+  --color-cream-dark:#F0E9DF;
+  --color-charcoal:  #1A1A1A;
+  --color-charcoal-light: #2D2D2D;
+  --color-gold:      #C8A96E;
+  --color-gold-light:#D4BA82;
+  --color-gold-dark: #A8894E;
+  --color-warm-gray: #6B6560;
+  --color-warm-gray-light: #9B9590;
+  --color-terracotta:#B85C38;
+
+  /* ── Fonts ────────────────────────────────── */
+  --font-heading: "DM Serif Display", serif;
+  --font-body:    "Inter", sans-serif;
+
+  /* ── Shadows ──────────────────────────────── */
+  --shadow-soft: 0 4px 20px rgba(26, 26, 26, 0.08);
+  --shadow-glow: 0 0 40px rgba(200, 169, 110, 0.15);
+
+  /* ── Transitions ──────────────────────────── */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Base reset & global styles ────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-charcoal);
+  line-height: 1.6;
+}
+
+/* ── Load-triggered animation (above-the-fold) ── */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-load {
+    animation: fadeSlideUp 0.8s ease-out both;
+  }
+
+  .animate-load-delay-1 {
+    animation-delay: 0.15s;
+  }
+
+  .animate-load-delay-2 {
+    animation-delay: 0.3s;
+  }
+
+  .animate-load-delay-3 {
+    animation-delay: 0.45s;
+  }
+}
+
+/* ── Scroll-driven reveal animation (below-the-fold) ── */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-reveal {
+    animation: fadeSlideUp auto ease-out both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 30%;
+  }
+
+  .animate-reveal-delay-1 {
+    animation-range: entry 10% entry 40%;
+  }
+
+  .animate-reveal-delay-2 {
+    animation-range: entry 20% entry 50%;
+  }
+
+  .animate-reveal-delay-3 {
+    animation-range: entry 30% entry 60%;
+  }
+
+  /* Fallback: browsers without animation-timeline show content visible */
+  @supports not (animation-timeline: view()) {
+    .animate-reveal,
+    .animate-reveal-delay-1,
+    .animate-reveal-delay-2,
+    .animate-reveal-delay-3 {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ── Print styles ──────────────────────────────── */
+@media print {
+  nav[aria-label="Menu sections"] {
+    display: none;
+  }
+
+  .animate-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+

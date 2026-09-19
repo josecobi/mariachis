@@ -1,0 +1,33 @@
+# DO NOT
+
+- Do not state versions, library APIs, config filenames, or release history
+  from memory. Verify with a command (`cat package.json`, `npx <pkg> --version`,
+  `npm ls <pkg>`) or say "I can't verify this" and stop.
+- Do not use JavaScript animation libraries (GSAP, Framer Motion, AOS).
+- Do not create files that were not requested, or add sections beyond the ask.
+- Do not continue past 5 tool calls without stopping for review.
+
+# This project's stack (verified — do not assume otherwise)
+
+- Astro 7.x. Tailwind 4.x, CSS-first: there is NO tailwind.config.mjs and you
+  must not create one. Theme tokens go in src/styles/global.css under @theme.
+- Scaffold and add integrations with official tooling, always with --yes
+  (`npx astro add <name> --yes`). Interactive prompts hang the terminal.
+
+# Build standards
+
+- Target 100 Lighthouse across all four categories.
+- Zero client-side JS by default. Any JS needs a stated reason.
+- Use Astro's <Image /> component, never raw <img>.
+- Wrap all animation in a prefers-reduced-motion guard.
+- Scroll animations use animation-timeline: view(), not load-triggered keyframes.
+
+# Scope
+
+- One component per task. Stop when it's done and wait.
+- When asked to change a file, change only that file. Name any other file you
+  believe needs changing and wait for approval.
+# SEO
+
+- Read SEO-PLAN.md before building any page or component. Its §8 checklist is
+  part of "done" for every task.

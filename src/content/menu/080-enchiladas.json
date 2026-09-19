@@ -1,0 +1,17 @@
+{
+  "name": "Enchiladas",
+  "order": 80,
+  "note": "Four corn tortillas topped with our house-made mild spicy sauce, lettuce, cheese, and cream. Choose green or red.",
+  "items": [
+    {
+      "name": "Sencillas",
+      "price": 0,
+      "tags": ["veggie"]
+    },
+    {
+      "name": "Con Carne",
+      "price": 0,
+      "options": "marinated pork, Mexican sausage, chicken or steak"
+    }
+  ]
+}

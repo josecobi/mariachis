@@ -1,0 +1,37 @@
+{
+  "name": "Drinks",
+  "order": 210,
+  "items": [
+    {
+      "name": "Horchata",
+      "description": "Agua fresca.",
+      "price": 0
+    },
+    {
+      "name": "Jamaica",
+      "description": "Agua fresca.",
+      "price": 0
+    },
+    {
+      "name": "Tamarindo",
+      "description": "Agua fresca.",
+      "price": 0
+    },
+    {
+      "name": "Shakes",
+      "price": 0
+    },
+    {
+      "name": "Coffee",
+      "price": 0
+    },
+    {
+      "name": "Té",
+      "price": 0
+    },
+    {
+      "name": "Hot Chocolate",
+      "price": 0
+    }
+  ]
+}
