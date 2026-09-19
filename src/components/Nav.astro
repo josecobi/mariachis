@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logoMark from '../assets/logo-mark.png';
+
 interface Props {
   currentPath?: string;
 }
@@ -21,7 +24,8 @@ const isActive = (href: string) => normalize(currentPath) === normalize(href);
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Logo/Brand -->
-      <a href="/" class="flex items-center">
+      <a href="/" class="flex items-center gap-2.5">
+        <Image src={logoMark} alt="" width={407} height={146} class="h-8 w-auto" loading="eager" />
         <span class="text-2xl font-heading text-gold">Los Mariachis</span>
       </a>
 
